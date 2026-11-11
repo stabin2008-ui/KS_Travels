@@ -83,47 +83,28 @@ export function FleetSection({ onSelectVehicleForBooking }: FleetSectionProps) {
           </p>
         </div>
 
-        {/* Mobile Category Quick Tabs + Swipe Cue */}
-        <div className="mt-7 flex items-center justify-between gap-2 lg:hidden">
-          <div className="flex flex-wrap gap-1.5" role="tablist" aria-label="Fleet categories">
-            {FLEET_CATEGORIES.map((item, idx) => (
-              <button
-                key={item.id}
-                type="button"
-                role="tab"
-                aria-selected={activeSlideIndex === idx}
-                onClick={() => scrollToSlide(idx)}
-                className={`cursor-pointer rounded-full px-3 py-1.5 text-xs font-semibold transition-colors ${
-                  activeSlideIndex === idx
-                    ? 'bg-[#C5A46D] text-[#101C2C]'
-                    : 'border border-white/15 bg-[#17263B] text-[#F7F5F0]/80 hover:border-[#C5A46D]/60'
-                }`}
-              >
-                {item.name}
-              </button>
-            ))}
-          </div>
-
-          <div className="flex items-center gap-1.5">
+        {/* Mobile Category Quick Tabs */}
+        <div
+          className="mt-7 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 lg:hidden"
+          role="tablist"
+          aria-label="Fleet categories"
+        >
+          {FLEET_CATEGORIES.map((item, idx) => (
             <button
+              key={item.id}
               type="button"
-              onClick={() => scrollToSlide(activeSlideIndex - 1)}
-              disabled={activeSlideIndex === 0}
-              aria-label="Previous vehicle category"
-              className="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-white/15 bg-[#17263B] text-white disabled:cursor-not-allowed disabled:opacity-40"
+              role="tab"
+              aria-selected={activeSlideIndex === idx}
+              onClick={() => scrollToSlide(idx)}
+              className={`min-h-[40px] cursor-pointer rounded-full px-3 py-1.5 text-center text-[11px] font-semibold whitespace-nowrap transition-colors min-[360px]:px-3.5 min-[360px]:text-xs sm:px-5 sm:text-sm ${
+                activeSlideIndex === idx
+                  ? 'bg-[#C5A46D] text-[#101C2C]'
+                  : 'border border-white/15 bg-[#17263B] text-[#F7F5F0]/80 hover:border-[#C5A46D]/60'
+              }`}
             >
-              <ChevronLeft className="h-4 w-4" />
+              {item.name}
             </button>
-            <button
-              type="button"
-              onClick={() => scrollToSlide(activeSlideIndex + 1)}
-              disabled={activeSlideIndex === FLEET_CATEGORIES.length - 1}
-              aria-label="Next vehicle category"
-              className="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-white/15 bg-[#17263B] text-white disabled:cursor-not-allowed disabled:opacity-40"
-            >
-              <ChevronRight className="h-4 w-4" />
-            </button>
-          </div>
+          ))}
         </div>
 
         {/* Swipeable Snap Carousel on Mobile/Tablet -> 3-Column Grid on Desktop */}
@@ -149,7 +130,6 @@ export function FleetSection({ onSelectVehicleForBooking }: FleetSectionProps) {
                   <img
                     src={activeSrc}
                     alt={activeAlt}
-                    loading="lazy"
                     decoding="async"
                     className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
                   />
@@ -200,7 +180,6 @@ export function FleetSection({ onSelectVehicleForBooking }: FleetSectionProps) {
                       <img
                         src={vehicle.exteriorImage}
                         alt={vehicle.exteriorAlt}
-                        loading="lazy"
                         decoding="async"
                         className="h-full w-full object-cover"
                       />
@@ -223,7 +202,6 @@ export function FleetSection({ onSelectVehicleForBooking }: FleetSectionProps) {
                       <img
                         src={vehicle.interiorImage}
                         alt={vehicle.interiorAlt}
-                        loading="lazy"
                         decoding="async"
                         className="h-full w-full object-cover"
                       />
@@ -275,18 +253,40 @@ export function FleetSection({ onSelectVehicleForBooking }: FleetSectionProps) {
           })}
         </div>
 
-        {/* Mobile Carousel Pagination Dots */}
-        <div className="mt-5 flex justify-center gap-2 lg:hidden" aria-hidden="true">
-          {FLEET_CATEGORIES.map((item, idx) => (
-            <button
-              key={item.id}
-              type="button"
-              onClick={() => scrollToSlide(idx)}
-              className={`h-2 rounded-full transition-all ${
-                activeSlideIndex === idx ? 'w-7 bg-[#C5A46D]' : 'w-2 bg-white/30'
-              }`}
-            />
-          ))}
+        {/* Mobile Carousel Controls & Pagination Dots */}
+        <div className="mt-5 flex items-center justify-between lg:hidden">
+          <button
+            type="button"
+            onClick={() => scrollToSlide(activeSlideIndex - 1)}
+            disabled={activeSlideIndex === 0}
+            aria-label="Previous vehicle category"
+            className="inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/15 bg-[#17263B] text-white disabled:cursor-not-allowed disabled:opacity-40"
+          >
+            <ChevronLeft className="h-4 w-4" />
+          </button>
+
+          <div className="flex justify-center gap-2" aria-hidden="true">
+            {FLEET_CATEGORIES.map((item, idx) => (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => scrollToSlide(idx)}
+                className={`h-2 rounded-full transition-all ${
+                  activeSlideIndex === idx ? 'w-7 bg-[#C5A46D]' : 'w-2 bg-white/30'
+                }`}
+              />
+            ))}
+          </div>
+
+          <button
+            type="button"
+            onClick={() => scrollToSlide(activeSlideIndex + 1)}
+            disabled={activeSlideIndex === FLEET_CATEGORIES.length - 1}
+            aria-label="Next vehicle category"
+            className="inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/15 bg-[#17263B] text-white disabled:cursor-not-allowed disabled:opacity-40"
+          >
+            <ChevronRight className="h-4 w-4" />
+          </button>
         </div>
 
         <p className="mt-8 text-center text-xs text-[#F7F5F0]/65 sm:text-sm">

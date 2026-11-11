@@ -23,7 +23,6 @@
     font-family: var(--font-sans);
     background-color: #F7F5F0;
     color: #343A40;
-    overflow-x: clip;
     -webkit-tap-highlight-color: rgba(197, 164, 109, 0.2);
   }
 

@@ -43,7 +43,7 @@ export function App() {
     <div className="min-h-screen bg-[#F7F5F0] text-[#343A40]">
       <Navbar onBookClick={scrollToBooking} />
 
-      <main>
+      <main className="overflow-x-clip">
         <HeroSection onBookClick={scrollToBooking} />
         <ServicesSection onBookService={handleSelectService} />
         <FleetSection onSelectVehicleForBooking={handleSelectVehicle} />

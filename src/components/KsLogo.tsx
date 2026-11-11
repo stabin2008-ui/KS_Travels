@@ -4,6 +4,7 @@ import { BUSINESS_INFO } from '../config/business';
 interface KsLogoProps {
   className?: string;
   iconSize?: number;
+  iconClassName?: string;
   showWordmark?: boolean;
   showTagline?: boolean;
   lightText?: boolean;
@@ -109,15 +110,16 @@ export function KsMonogramSvg({
 export function KsLogo({
   className = '',
   iconSize = 42,
+  iconClassName,
   showWordmark = true,
   showTagline = false,
   lightText = true,
 }: KsLogoProps) {
   return (
-    <span className={`inline-flex items-center gap-3 ${className}`}>
+    <span className={`inline-flex max-w-full items-center gap-2.5 sm:gap-3 ${className}`}>
       <KsMonogramSvg
-        style={{ width: iconSize, height: iconSize }}
-        className="shrink-0 drop-shadow-sm"
+        style={iconClassName ? undefined : { width: iconSize, height: iconSize }}
+        className={`shrink-0 drop-shadow-sm ${iconClassName ?? ''}`}
       />
       {showWordmark && (
         <span className="flex min-w-0 flex-col leading-tight">

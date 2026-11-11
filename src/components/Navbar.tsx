@@ -41,24 +41,23 @@ export function Navbar({ onBookClick }: NavbarProps) {
 
   return (
     <header
-      className={`sticky top-0 z-40 transition-all duration-300 ${
+      className={`sticky top-0 z-50 transition-all duration-300 ${
         isScrolled
           ? 'border-b border-[#C5A46D]/25 bg-[#101C2C]/95 shadow-lg backdrop-blur-md'
           : 'border-b border-white/10 bg-[#101C2C]/95 backdrop-blur-sm'
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:h-20 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-2 px-4 sm:h-20 sm:px-6 lg:px-8">
         <a
           href="#home"
           onClick={(e) => {
             e.preventDefault();
             handleNavClick('#home');
           }}
-          className="focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C5A46D] rounded-lg"
+          className="min-w-0 flex-1 rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C5A46D] lg:flex-none"
           aria-label="KS Travels Home"
         >
-          <KsLogo iconSize={40} showTagline className="sm:hidden" />
-          <KsLogo iconSize={44} showTagline className="hidden sm:inline-flex" />
+          <KsLogo iconClassName="h-10 w-10 sm:h-11 sm:w-11" showTagline />
         </a>
 
         {/* Desktop Navigation */}
@@ -96,7 +95,7 @@ export function Navbar({ onBookClick }: NavbarProps) {
         </div>
 
         {/* Tablet/Mobile Compact Actions */}
-        <div className="flex items-center gap-2 lg:hidden">
+        <div className="flex shrink-0 items-center gap-2 lg:hidden">
           <button
             type="button"
             onClick={() => {
@@ -113,7 +112,7 @@ export function Navbar({ onBookClick }: NavbarProps) {
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-nav-drawer"
             aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-            className="inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-lg border border-white/15 bg-[#17263B] text-[#F7F5F0] transition-colors hover:border-[#C5A46D] hover:text-[#C5A46D]"
+            className="inline-flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-lg border border-white/15 bg-[#17263B] text-[#F7F5F0] transition-colors hover:border-[#C5A46D] hover:text-[#C5A46D]"
           >
             {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -124,7 +123,7 @@ export function Navbar({ onBookClick }: NavbarProps) {
       {mobileMenuOpen && (
         <div
           id="mobile-nav-drawer"
-          className="border-t border-[#C5A46D]/20 bg-[#101C2C] px-4 pb-5 pt-3 shadow-2xl lg:hidden"
+          className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-[#C5A46D]/20 bg-[#101C2C] px-4 pb-24 pt-3 shadow-2xl md:pb-6 lg:hidden"
         >
           <nav aria-label="Mobile navigation" className="flex flex-col space-y-1">
             {NAV_LINKS.map((item) => (

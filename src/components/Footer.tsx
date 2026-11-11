@@ -19,7 +19,7 @@ export function Footer({ onSelectService }: FooterProps) {
   };
 
   return (
-    <footer className="border-t border-[#C5A46D]/25 bg-[#101C2C] pb-24 pt-12 text-[#F7F5F0] md:pb-10 sm:pt-16">
+    <footer className="border-t border-[#C5A46D]/25 bg-[#101C2C] pb-[calc(6.75rem+env(safe-area-inset-bottom))] pt-12 text-[#F7F5F0] sm:pt-16 md:pb-20 lg:pb-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-12">
           {/* Brand Column */}
@@ -133,7 +133,7 @@ export function Footer({ onSelectService }: FooterProps) {
         </div>
 
         {/* Bottom Legal Line */}
-        <div className="mt-10 flex flex-col items-center justify-between gap-2 border-t border-white/10 pt-6 text-center text-xs text-[#F7F5F0]/65 sm:flex-row sm:text-left">
+        <div className="mt-10 flex flex-col items-center justify-between gap-2 border-t border-white/10 pt-6 text-center text-xs text-[#F7F5F0]/65 sm:flex-row sm:text-left md:pr-48">
           <p>
             &copy; {currentYear} {BUSINESS_INFO.name}. All rights reserved.
           </p>

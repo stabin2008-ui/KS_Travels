@@ -16,6 +16,16 @@ test('renders full KS Travels application with required sections, copy, links, a
   assert.ok(html.includes('Your Journey. Our Commitment.'));
   assert.ok(html.includes('Travel in Comfort. Arrive in Style.'));
 
+  // Regression check: strictly one header and one KS monogram/wordmark inside the header
+  const headerMatches = html.match(/<header[\s>]/g) ?? [];
+  assert.equal(headerMatches.length, 1, 'Expected exactly one <header> element');
+  const headerHtml = html.match(/<header[\s\S]*?<\/header>/)?.[0] ?? '';
+  const headerLogoSvgs = headerHtml.match(/<svg[^>]*viewBox="0 0 64 64"/g) ?? [];
+  assert.equal(headerLogoSvgs.length, 1, 'Expected exactly one KS monogram SVG inside <header>');
+
+  // Regression check: mobile 2-column x 2-row trust highlights grid
+  assert.ok(html.includes('grid-cols-2'), 'Expected 2-column mobile trust highlights grid');
+
   // Exact Hero & About copy
   assert.ok(
     html.includes(
