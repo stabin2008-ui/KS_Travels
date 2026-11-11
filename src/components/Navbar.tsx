@@ -57,7 +57,7 @@ export function Navbar({ onBookClick }: NavbarProps) {
           className="min-w-0 flex-1 rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C5A46D] lg:flex-none"
           aria-label="KS Travels Home"
         >
-          <KsLogo iconClassName="h-10 w-10 sm:h-11 sm:w-11" showTagline />
+          <KsLogo iconClassName="h-10 w-10 sm:h-11 sm:w-11" variant="header" showTagline />
         </a>
 
         {/* Desktop Navigation */}

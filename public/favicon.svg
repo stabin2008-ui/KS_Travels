@@ -1,48 +1,59 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
   <defs>
-    <linearGradient id="ksGoldGrad" x1="10" y1="8" x2="54" y2="56" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#DFC28C" />
-      <stop offset="50%" stop-color="#C5A46D" />
-      <stop offset="100%" stop-color="#9E7D47" />
+    <linearGradient id="ksFavGold" x1="10" y1="6" x2="54" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#EBD2A0" />
+      <stop offset="46%" stop-color="#C5A46D" />
+      <stop offset="100%" stop-color="#9A7842" />
     </linearGradient>
-    <linearGradient id="ksNavyBg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#17263B" />
-      <stop offset="100%" stop-color="#101C2C" />
+    <linearGradient id="ksFavNavy" x1="10" y1="4" x2="54" y2="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#192B43" />
+      <stop offset="100%" stop-color="#0D1726" />
     </linearGradient>
+    <mask id="ksFavKOver">
+      <rect x="0" y="0" width="64" height="64" fill="white" />
+      <path d="M22.2 28.0 L33.8 15.8" stroke="black" stroke-width="7.0" stroke-linecap="butt" />
+    </mask>
+    <mask id="ksFavSOver">
+      <rect x="0" y="0" width="64" height="64" fill="white" />
+      <path
+        d="M40.5 31.0 C43.8 32.6 45.8 34.8 45.8 37.8 C45.8 41.6 42.0 43.8 36.8 43.8 C32.6 43.8 29.6 42.0 28.0 39.4"
+        stroke="black"
+        stroke-width="8.4"
+        stroke-linecap="round"
+      />
+    </mask>
   </defs>
 
-  <!-- Outer crest -->
-  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#ksNavyBg)" stroke="url(#ksGoldGrad)" stroke-width="2.5" />
-  <rect x="6.5" y="6.5" width="51" height="51" rx="12" stroke="#C5A46D" stroke-opacity="0.28" stroke-width="1" />
-
-  <!-- Subtle compass dot above -->
-  <path d="M32 10.5L33.4 13.5L36.5 14.9L33.4 16.3L32 19.3L30.6 16.3L27.5 14.9L30.6 13.5L32 10.5Z" fill="#C5A46D" fill-opacity="0.85" />
-
-  <!-- Letter K -->
   <path
-    d="M16 19V45M16 32.5L28.5 19.5M20.5 28L30.5 45"
-    stroke="url(#ksGoldGrad)"
-    stroke-width="3.6"
-    stroke-linecap="round"
+    d="M32 2.5 Q46.2 2.5 55.6 7.0 Q57.6 8.0 57.6 10.8 C57.6 34.8 51.4 49.4 32 61.5 C12.6 49.4 6.4 34.8 6.4 10.8 Q6.4 8.0 8.4 7.0 Q17.8 2.5 32 2.5 Z"
+    fill="url(#ksFavNavy)"
+    stroke="url(#ksFavGold)"
+    stroke-width="3.2"
     stroke-linejoin="round"
   />
 
-  <!-- Flowing road-inspired S monogram -->
-  <path
-    d="M47 22.5C47 19.6 43.8 18 40.2 18C36.5 18 33.8 20.1 33.8 23.2C33.8 26.8 37.2 28.4 41.2 30.2C45.3 32 48.2 33.9 48.2 38C48.2 42.1 44.5 45 39.8 45C35.8 45 33 43.3 32 41"
-    stroke="url(#ksGoldGrad)"
-    stroke-width="3.6"
-    stroke-linecap="round"
-  />
+  <g mask="url(#ksFavKOver)">
+    <path
+      d="M44.2 20.5 C44.2 17.4 41.0 15.8 36.6 15.8 C32.0 15.8 29.2 18.4 29.2 22.0 C29.2 26.4 33.8 27.8 38.4 29.6 C43.0 31.4 45.8 33.6 45.8 37.8 C45.8 41.6 42.0 43.8 36.8 43.8 C32.6 43.8 29.6 42.0 28.0 39.4"
+      stroke="url(#ksFavGold)"
+      stroke-width="5.6"
+      stroke-linecap="round"
+    />
+    <path
+      d="M44.2 20.5 C44.2 17.4 41.0 15.8 36.6 15.8 C32.0 15.8 29.2 18.4 29.2 22.0 C29.2 26.4 33.8 27.8 38.4 29.6 C43.0 31.4 45.8 33.6 45.8 37.8 C45.8 41.6 42.0 43.8 36.8 43.8 C32.6 43.8 29.6 42.0 28.0 39.4"
+      stroke="#101C2C"
+      stroke-width="1.05"
+      stroke-linecap="round"
+    />
+  </g>
 
-  <!-- Subtle route sweep linking K and S along the lower base -->
+  <path d="M17.8 15.6 H22.0 V41.0 H17.8 Z" fill="url(#ksFavGold)" />
+  <path d="M20.2 29.8 L33.6 15.9" stroke="url(#ksFavGold)" stroke-width="4.2" stroke-linecap="butt" />
   <path
-    d="M15 49.5C23 47 36 51.5 49 48"
-    stroke="#F7F5F0"
-    stroke-opacity="0.65"
-    stroke-width="1.3"
-    stroke-linecap="round"
-    stroke-dasharray="3 2.5"
+    d="M22.8 26.8 L33.2 40.8"
+    stroke="url(#ksFavGold)"
+    stroke-width="4.2"
+    stroke-linecap="butt"
+    mask="url(#ksFavSOver)"
   />
 </svg>
-

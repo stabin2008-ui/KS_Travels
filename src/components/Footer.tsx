@@ -32,7 +32,7 @@ export function Footer({ onSelectService }: FooterProps) {
               }}
               aria-label="Back to KS Travels home"
             >
-              <KsLogo iconSize={46} showTagline />
+              <KsLogo iconSize={46} variant="footer" showTagline />
             </a>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-[#F7F5F0]/80">
               Trusted taxi and travel services in Bengaluru backed by 25 years of industry

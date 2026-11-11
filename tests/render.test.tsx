@@ -22,6 +22,15 @@ test('renders full KS Travels application with required sections, copy, links, a
   const headerHtml = html.match(/<header[\s\S]*?<\/header>/)?.[0] ?? '';
   const headerLogoSvgs = headerHtml.match(/<svg[^>]*viewBox="0 0 64 64"/g) ?? [];
   assert.equal(headerLogoSvgs.length, 1, 'Expected exactly one KS monogram SVG inside <header>');
+  assert.ok(headerHtml.includes('data-logo-variant="header"'));
+
+  const footerHtml = html.match(/<footer[\s\S]*?<\/footer>/)?.[0] ?? '';
+  assert.ok(footerHtml.includes('data-logo-variant="footer"'));
+
+  // Unique SVG gradient/mask IDs across multiple instances on page
+  const svgIds = [...html.matchAll(/id="(ks(?:Gold|Navy|KOver|SOver)-[^"]+)"/g)].map((m) => m[1]);
+  assert.equal(svgIds.length, 8, `Expected 8 unique SVG def IDs across header & footer, got ${svgIds.length}`);
+  assert.equal(new Set(svgIds).size, svgIds.length, 'Expected no duplicate SVG def IDs');
 
   // Regression check: mobile 2-column x 2-row trust highlights grid
   assert.ok(html.includes('grid-cols-2'), 'Expected 2-column mobile trust highlights grid');
@@ -108,6 +117,13 @@ test('renders full KS Travels application with required sections, copy, links, a
     const filePath = path.join(distDir, src.replace(/^\//, ''));
     assert.ok(fs.existsSync(filePath), `Missing image asset in dist/: ${src}`);
     assert.ok(fs.statSync(filePath).size > 10000, `Image unexpectedly small: ${src}`);
+  }
+
+  for (const logoAsset of ['favicon.svg', 'logo.svg']) {
+    const logoPath = path.join(distDir, logoAsset);
+    assert.ok(fs.existsSync(logoPath), `Missing SVG logo asset in dist/: ${logoAsset}`);
+    const svgContent = fs.readFileSync(logoPath, 'utf8');
+    assert.ok(svgContent.includes('#C5A46D') && svgContent.includes('#101C2C'));
   }
 });
 
