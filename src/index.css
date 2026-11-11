@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme {
+  --color-midnight-navy: #101C2C;
+  --color-deep-navy: #17263B;
+  --color-champagne-gold: #C5A46D;
+  --color-champagne-gold-hover: #B39158;
+  --color-warm-ivory: #F7F5F0;
+  --color-charcoal: #343A40;
+
+  --font-display: "Cormorant Garamond", Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 4.75rem;
+    overflow-x: clip;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #F7F5F0;
+    color: #343A40;
+    overflow-x: clip;
+    -webkit-tap-highlight-color: rgba(197, 164, 109, 0.2);
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+/* Smooth horizontal snap carousel scrollbar hiding for mobile fleet cards */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Subtle reveal animation for hero and modal entrance */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-fade-in-up {
+    animation: none;
+  }
+}
+
